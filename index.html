@@ -1,0 +1,205 @@
+<html ng-app="listaTelefonica">
+<head>
+<meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
+	<title>Placar Taekwondo[BETA] @Carlos</title>
+	<style type="text/css">
+	
+	#PS1 {
+		width: 200px;
+		height: 100px;
+		float: left;
+		padding: 10px;
+		border: solid 2px;
+
+	}
+	
+	#PS2 {
+		width: 200px;
+		height: 100px;
+		padding: 10px;
+		margin: 0px 0px 0px 205px;
+		border: solid 2px;
+	}
+	
+	.bntPS1 {
+		width: 150px;
+		height: 100px;
+		padding: 10px;
+		float: left;
+		border: solid 2px;
+	}
+	
+	.bntPS2 {
+		width: 150px;
+		height: 100px;
+		padding: 10px;
+		border: solid 2px;
+		margin: 0px 0px 0px 205px;
+	}
+	
+	.span6 {
+		padding: 20px;
+		border: 3px solid #ddd;
+		height: 100px;
+		background-color:#eee;
+		margin-bottom: 10px;
+		font-size:40px;
+
+	}
+
+
+	</style>
+	<link rel="stylesheet" type="text/css" href="lib/bootstrap/bootstrap.css">
+	<script src="lib/jquery/jquery.min.js"></script>
+  	<script src="lib/bootstrap/bootstrap.min.js"></script>
+	<script src="lib/angular/angular.js"></script>
+	<script>
+        angular.module("listaTelefonica", []);
+        angular.module("listaTelefonica", []).controller("listaTelefonicaCtrl", function ($scope,$timeout) {
+        	$scope.app = "Placar";
+			$scope.ps1 = 0;
+			$scope.ps2 = 0;
+			
+        	$scope.contatos = [
+        		{nome: "Isaac", telefone: "999994555", selecionado: false},
+        		{nome: "Rafael", telefone: "999994555", selecionado: false}, 
+        		{nome: "Diego", telefone: "999994555", selecionado: false}
+        	];
+
+        	$scope.operadoras = [
+        		{nome: "Oi", codigo: 14},
+        		{nome: "Vivo", codigo: 15},
+        		{nome: "Tim", codigo: 41}
+        	];
+
+        	$scope.adicionarContato = function (contato) {
+        		$scope.contatos.push(angular.copy(contato));
+        		delete $scope.contato;
+        	};
+
+        	$scope.apagarContatos = function (contatos){
+        		$scope.contatos = contatos.filter(function (contato) {
+        			if(!contato.selecionado) return contato;
+        		});
+
+        		console.log($scope.contatos);
+        	};
+
+        	 $scope.isContatoSelecionado = function (contatos){
+        		return contatos.some(function (contato) {
+        			return contato.selecionado;
+        		});
+        	};
+			
+			 $scope.somarPS1 = function (numero){
+				$scope.ps1 += numero; 
+        	};
+			
+			$scope.somarPS2 = function (numero){
+				$scope.ps2 += numero; 
+        	};
+			
+			$scope.zerarPlacar = function (){
+				$scope.ps1 = 0;
+				$scope.ps2 = 0;				
+        	};
+
+        });
+
+	</script>
+</head>
+	<body ng-controller="listaTelefonicaCtrl">
+<!--         <div class="jumbotron">
+            <h3>{{app}}</h3>
+            <table ng-show="contatos.length > 0" class="table ">
+            	<tr class="text-info">
+            		<td></td>
+            		<td>Nome</td>
+            		<td>Telefone</td>
+            		<td>Operadora</td>
+            	</tr>
+            	<tr ng-class="{success : contato.selecionado}" ng-repeat="contato in contatos">
+            		<td><input class="md-primary" type="checkbox" ng-model="contato.selecionado" /></td>
+            		<td>{{contato.nome}}</td>
+            		<td>{{contato.telefone}}</td>
+            		<td>{{contato.operadora.nome}}</td>
+            	</tr>
+            </table>
+            <hr/>
+            <form name="contatoForm">
+            <input class="form-control" type="text" ng-model="contato.nome" placeholder="Nome" ng-required="true">
+            <input class="form-control" type="text" ng-model="contato.telefone" placeholder="Telefone" ng-required="true">
+            <select class="form-control" ng-model="contato.operadora" ng-options="operadora.nome for operadora in operadoras" ng-required="true">
+            	<option value="">Selecione um operadora</option>
+            </select>
+            <button class="btn btn-primary btn-block" ng-click="adicionarContato(contato)" ng-disabled="contatoForm.$invalid">Adicionar Contato</button>
+            <button class="btn btn-danger btn-block" data-toggle="modal" data-target="#deleteModal" ng-if="isContatoSelecionado(contatos)">Apagar Contato</button>
+        </div> -->
+		
+		<div class="jumbotron">
+		<h1 align='center'>Placar Taekwondo</h1>
+			
+		<div class="container">
+			<div class="row row-centered">
+				<div class="col-xs-6 col-centered span6 btn-primary" ><p class="text-center">{{ps1}}</p></div>
+				<div class="col-xs-6 col-centered span6 btn-danger"><p class="text-center">{{ps2}}</p></div>
+			</div>
+		</div>
+
+		<div class="btn-group btn-group-justified">
+			<div class="btn-group">
+				<button class="btn btn-primary btn-lg" ng-click="somarPS1(3)" >Head/Cabeça +3</button>
+			</div>
+			<div class="btn-group">
+				<button class="btn btn-danger btn-lg" ng-click="somarPS2(3)" >Head/Cabeça +3</button>
+			</div>
+		</div>
+		<br>
+		<div class="btn-group btn-group-justified">
+			<div class="btn-group">
+				<button class="btn btn-primary" ng-click="somarPS1(1)" >Body/Tronco +1</button>
+			</div>
+			<div class="btn-group">
+				<button class="btn btn-danger" ng-click="somarPS2(1)" >Body/Tronco +1</button>
+			</div>
+		
+		</div>
+		<br>
+				<button class="btn btn-success btn-block" data-toggle="modal" data-target="#zerarModal">Reiniciar</button>		
+		<div class="btn-group btn-group-justified">
+			<div class="btn-group">
+				{{hora}}
+			</div>
+			<div class="btn-group">
+				{{minuto}}
+			</div>
+			<div class="btn-group">
+				{{segundo}}
+			</div>
+		</div>
+		
+		</div>
+		
+		
+
+<!--modal-delete -->
+   <div id="zerarModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">Fechar</span></button>
+          <h4 class="modal-title" id="myModalLabel">Confirmar</h4>
+        </div>
+        <div class="modal-body">
+          <div class="modalMsg"><p>Deseja realmente zerar o placar ?</p></div>
+          <div class="actionsBtns">
+            <button class="btn btn-default" ng-click="zerarPlacar()" data-dismiss="modal">Sim</button>
+            <button class="btn btn-default" data-dismiss="modal">Não</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div><!--/modal-->
+
+	</body>
+</html>
