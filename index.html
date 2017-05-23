@@ -3,7 +3,7 @@
 <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
 	<title>Placar Taekwondo[BETA] @Carlos</title>
 	<style type="text/css">
-	
+
 	#PS1 {
 		width: 200px;
 		height: 100px;
@@ -12,7 +12,7 @@
 		border: solid 2px;
 
 	}
-	
+
 	#PS2 {
 		width: 200px;
 		height: 100px;
@@ -20,7 +20,7 @@
 		margin: 0px 0px 0px 205px;
 		border: solid 2px;
 	}
-	
+
 	.bntPS1 {
 		width: 150px;
 		height: 100px;
@@ -28,7 +28,7 @@
 		float: left;
 		border: solid 2px;
 	}
-	
+
 	.bntPS2 {
 		width: 150px;
 		height: 100px;
@@ -36,7 +36,7 @@
 		border: solid 2px;
 		margin: 0px 0px 0px 205px;
 	}
-	
+
 	.span6 {
 		padding: 20px;
 		border: 3px solid #ddd;
@@ -59,10 +59,10 @@
         	$scope.app = "Placar";
 			$scope.ps1 = 0;
 			$scope.ps2 = 0;
-			
+
         	$scope.contatos = [
         		{nome: "Isaac", telefone: "999994555", selecionado: false},
-        		{nome: "Rafael", telefone: "999994555", selecionado: false}, 
+        		{nome: "Rafael", telefone: "999994555", selecionado: false},
         		{nome: "Diego", telefone: "999994555", selecionado: false}
         	];
 
@@ -90,18 +90,18 @@
         			return contato.selecionado;
         		});
         	};
-			
+
 			 $scope.somarPS1 = function (numero){
-				$scope.ps1 += numero; 
+				$scope.ps1 += numero;
         	};
-			
+
 			$scope.somarPS2 = function (numero){
-				$scope.ps2 += numero; 
+				$scope.ps2 += numero;
         	};
-			
+
 			$scope.zerarPlacar = function (){
 				$scope.ps1 = 0;
-				$scope.ps2 = 0;				
+				$scope.ps2 = 0;
         	};
 
         });
@@ -135,10 +135,10 @@
             <button class="btn btn-primary btn-block" ng-click="adicionarContato(contato)" ng-disabled="contatoForm.$invalid">Adicionar Contato</button>
             <button class="btn btn-danger btn-block" data-toggle="modal" data-target="#deleteModal" ng-if="isContatoSelecionado(contatos)">Apagar Contato</button>
         </div> -->
-		
+
 		<div class="jumbotron">
 		<h1 align='center'>Placar Taekwondo</h1>
-			
+
 		<div class="container">
 			<div class="row row-centered">
 				<div class="col-xs-6 col-centered span6 btn-primary" ><p class="text-center">{{ps1}}</p></div>
@@ -148,24 +148,24 @@
 
 		<div class="btn-group btn-group-justified">
 			<div class="btn-group">
-				<button class="btn btn-primary btn-lg" ng-click="somarPS1(3)" >Head/Cabeça +3</button>
+				<button class="btn btn-primary btn-lg" ng-click="somarPS1(3)" >+3</button>
 			</div>
 			<div class="btn-group">
-				<button class="btn btn-danger btn-lg" ng-click="somarPS2(3)" >Head/Cabeça +3</button>
+				<button class="btn btn-danger btn-lg" ng-click="somarPS2(3)" >+3</button>
 			</div>
 		</div>
 		<br>
 		<div class="btn-group btn-group-justified">
 			<div class="btn-group">
-				<button class="btn btn-primary" ng-click="somarPS1(1)" >Body/Tronco +1</button>
+				<button class="btn btn-primary" ng-click="somarPS1(1)" >+1</button>
 			</div>
 			<div class="btn-group">
-				<button class="btn btn-danger" ng-click="somarPS2(1)" >Body/Tronco +1</button>
+				<button class="btn btn-danger" ng-click="somarPS2(1)" >+1</button>
 			</div>
-		
+
 		</div>
 		<br>
-				<button class="btn btn-success btn-block" data-toggle="modal" data-target="#zerarModal">Reiniciar</button>		
+				<button class="btn btn-success btn-block" data-toggle="modal" data-target="#zerarModal">Reiniciar</button>
 		<div class="btn-group btn-group-justified">
 			<div class="btn-group">
 				{{hora}}
@@ -177,10 +177,10 @@
 				{{segundo}}
 			</div>
 		</div>
-		
+
 		</div>
-		
-		
+
+
 
 <!--modal-delete -->
    <div id="zerarModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
