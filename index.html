@@ -1,4 +1,4 @@
-<html ng-app="listaTelefonica">
+<html ng-app="placarTaekwondo">
 <head>
 <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
 	<title>Placar Taekwondo[BETA] @Carlos</title>
@@ -10,7 +10,6 @@
 		float: left;
 		padding: 10px;
 		border: solid 2px;
-
 	}
 
 	#PS2 {
@@ -44,98 +43,36 @@
 		background-color:#eee;
 		margin-bottom: 10px;
 		font-size:40px;
-
 	}
-
-
+	
 	</style>
 	<link rel="stylesheet" type="text/css" href="lib/bootstrap/bootstrap.css">
 	<script src="lib/jquery/jquery.min.js"></script>
   	<script src="lib/bootstrap/bootstrap.min.js"></script>
 	<script src="lib/angular/angular.js"></script>
 	<script>
-        angular.module("listaTelefonica", []);
-        angular.module("listaTelefonica", []).controller("listaTelefonicaCtrl", function ($scope,$timeout) {
-        	$scope.app = "Placar";
-			$scope.ps1 = 0;
-			$scope.ps2 = 0;
+        angular.module("placarTaekwondo", []).controller("placarTaekwondoCtrl", function ($scope,$timeout) {
+	        $scope.app = "Placar";
+					$scope.ps1 = 0;
+					$scope.ps2 = 0;
 
-        	$scope.contatos = [
-        		{nome: "Isaac", telefone: "999994555", selecionado: false},
-        		{nome: "Rafael", telefone: "999994555", selecionado: false},
-        		{nome: "Diego", telefone: "999994555", selecionado: false}
-        	];
+				 	$scope.somarPS1 = function (numero){
+						$scope.ps1 += numero;
+	        };
 
-        	$scope.operadoras = [
-        		{nome: "Oi", codigo: 14},
-        		{nome: "Vivo", codigo: 15},
-        		{nome: "Tim", codigo: 41}
-        	];
+					$scope.somarPS2 = function (numero){
+						$scope.ps2 += numero;
+	        };
 
-        	$scope.adicionarContato = function (contato) {
-        		$scope.contatos.push(angular.copy(contato));
-        		delete $scope.contato;
-        	};
-
-        	$scope.apagarContatos = function (contatos){
-        		$scope.contatos = contatos.filter(function (contato) {
-        			if(!contato.selecionado) return contato;
-        		});
-
-        		console.log($scope.contatos);
-        	};
-
-        	 $scope.isContatoSelecionado = function (contatos){
-        		return contatos.some(function (contato) {
-        			return contato.selecionado;
-        		});
-        	};
-
-			 $scope.somarPS1 = function (numero){
-				$scope.ps1 += numero;
-        	};
-
-			$scope.somarPS2 = function (numero){
-				$scope.ps2 += numero;
-        	};
-
-			$scope.zerarPlacar = function (){
-				$scope.ps1 = 0;
-				$scope.ps2 = 0;
-        	};
-
+					$scope.zerarPlacar = function (){
+						$scope.ps1 = 0;
+						$scope.ps2 = 0;
+	        };
         });
 
 	</script>
 </head>
-	<body ng-controller="listaTelefonicaCtrl">
-<!--         <div class="jumbotron">
-            <h3>{{app}}</h3>
-            <table ng-show="contatos.length > 0" class="table ">
-            	<tr class="text-info">
-            		<td></td>
-            		<td>Nome</td>
-            		<td>Telefone</td>
-            		<td>Operadora</td>
-            	</tr>
-            	<tr ng-class="{success : contato.selecionado}" ng-repeat="contato in contatos">
-            		<td><input class="md-primary" type="checkbox" ng-model="contato.selecionado" /></td>
-            		<td>{{contato.nome}}</td>
-            		<td>{{contato.telefone}}</td>
-            		<td>{{contato.operadora.nome}}</td>
-            	</tr>
-            </table>
-            <hr/>
-            <form name="contatoForm">
-            <input class="form-control" type="text" ng-model="contato.nome" placeholder="Nome" ng-required="true">
-            <input class="form-control" type="text" ng-model="contato.telefone" placeholder="Telefone" ng-required="true">
-            <select class="form-control" ng-model="contato.operadora" ng-options="operadora.nome for operadora in operadoras" ng-required="true">
-            	<option value="">Selecione um operadora</option>
-            </select>
-            <button class="btn btn-primary btn-block" ng-click="adicionarContato(contato)" ng-disabled="contatoForm.$invalid">Adicionar Contato</button>
-            <button class="btn btn-danger btn-block" data-toggle="modal" data-target="#deleteModal" ng-if="isContatoSelecionado(contatos)">Apagar Contato</button>
-        </div> -->
-
+	<body ng-controller="placarTaekwondoCtrl">
 		<div class="jumbotron">
 		<h1 align='center'>Placar Taekwondo</h1>
 
@@ -179,16 +116,13 @@
 		</div>
 
 		</div>
-
-
-
-<!--modal-delete -->
+	 <!--modal-delete -->
    <div id="zerarModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-sm">
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">Fechar</span></button>
-          <h4 class="modal-title" id="myModalLabel">Confirmar</h4>
+          <h4 class="modal-title" id="myModalLabel">Nova partida</h4>
         </div>
         <div class="modal-body">
           <div class="modalMsg"><p>Deseja realmente zerar o placar ?</p></div>
@@ -200,6 +134,5 @@
       </div>
     </div>
   </div><!--/modal-->
-
 	</body>
 </html>
