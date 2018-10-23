@@ -2,7 +2,7 @@
 
 Código original feito por: Isaac Melo
 
-## Code 
+## Code
 
 Angular
 
@@ -11,12 +11,12 @@ Angular
 - Chute na cabeça vale 3 pontos
 - Chute no tronco vale 2 pontos
 - Soco no tronco vale 1 ponto
-- Todos os chutes acertados ganham bonus de +1 ponto quanto feito com giro
+- Todos os chutes acertados ganham bônus de +1 ponto quanto feito com giro
 
 ## Possíveis implementações
 
 - Adicionar faltas
-- Adcionar rounds
-- Adicionar cronometro 
-- Adiocnar nomes dos lutadores
+- Adicionar rounds
+- Adicionar cronometro
+- Adicionar nomes dos lutadores
 - Refatorar código fonte
